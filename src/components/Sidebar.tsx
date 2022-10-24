@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { IGenre } from "../poco/IGenre";
 import SidebarItem from "./SidebarItem";
 
@@ -12,7 +13,7 @@ function Sidebar({genres}: SidebarParam){
         <div className="text-gray-100 text-xl">
           <div className="p-2.5 mt-1 flex items-center">
             <i className="bi bi-app-indicator px-2 py-1 rounded-md bg-blue-600"></i>
-            <h1 className="font-bold text-gray-200 text-[15px] ml-3">Films Catalog</h1>
+            <Link className="font-bold text-gray-200 text-[15px] ml-3" to="/">Films Catalog</Link>
           </div>
           <div className="my-2 bg-gray-600 h-[1px]"></div>
         </div>
