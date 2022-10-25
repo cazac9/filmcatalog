@@ -9,7 +9,7 @@ interface SidebarParam {
 function Sidebar({genres}: SidebarParam){
   return (
     <>
-      <div className="sidebar p-2 w-[300px] overflow-y-auto text-center bg-gray-900">
+      <div className="sidebar p-2 w-[300px] overflow-y-auto text-center bg-gray-900 min-h-screen">
         <div className="text-gray-100 text-xl">
           <div className="p-2.5 mt-1 flex items-center">
             <i className="bi bi-app-indicator px-2 py-1 rounded-md bg-blue-600"></i>
