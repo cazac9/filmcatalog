@@ -1,3 +1,5 @@
+import ActionButton from "../controls/ActionButton";
+
 function PageErrorFallback({error, resetErrorBoundary}: {error: any, resetErrorBoundary: any}) {
   return (
     <div className="text-white text-center">
@@ -5,10 +7,8 @@ function PageErrorFallback({error, resetErrorBoundary}: {error: any, resetErrorB
       <p className="text-3xl mt-2">Failed to load your page </p>
       <pre>{error.message}</pre>
       <div className="text-center mt-2">
-        <button className="bg-blue-500 margin-x-auto hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={() => window.location.reload()}>
-            Try again
-        </button>
-        </div>
+        <ActionButton title="Try again" action={() => window.location.reload()}></ActionButton>
+      </div>
     </div>
   )
 }

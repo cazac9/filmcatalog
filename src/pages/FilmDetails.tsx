@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import IconButton from "../components/controls/IconButton";
 import FilmDescRow from "../components/FilmDescRow";
 import Config from "../Config";
 import { FullFilmInfo } from "../poco/FullFilmInfo";
@@ -8,7 +9,7 @@ import { getMovie } from "../services/apiService";
 function FilmDetails() {
   const { filmId } = useParams();
   const [film, setFilm] = useState<FullFilmInfo>({} as FullFilmInfo);
-
+  const rating = 936;
 
   useEffect(() => {
     const getFilmAsync = async () => {
@@ -24,6 +25,11 @@ function FilmDetails() {
     <div className="flex flex-row flex-wrap">
       <div className="w-1/3">
         {film?.poster_path && <img src={ Config.ImagePath + "/w500" + film.poster_path} alt="loading" width="500" height="750"></img>}
+        <div className="mt-4 text-center">
+          <IconButton icon="bi-hand-thumbs-up" action={()=>{}}></IconButton>
+          <span className= {"inline-block text-xl px-4 " + (rating > 0 ? "text-green-600" : "text-red-600")}>{rating}</span>
+          <IconButton icon="bi-hand-thumbs-down" action={()=>{}}></IconButton>
+       </div>
       </div>
 
       <div className="w-2/3">
@@ -41,11 +47,11 @@ function FilmDetails() {
           <FilmDescRow title="Genre:" value={film.genres?.map(t => t.name).join(", ")}></FilmDescRow>
           <FilmDescRow title="Produced By:" value={film.production_companies?.map(t => t.name).join(", ")}></FilmDescRow>
         </div>
-       
 
         <span className="block text-white w-2/3">
           { film.overview }
         </span>
+
       </div>
 
     </div>

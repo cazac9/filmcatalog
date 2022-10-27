@@ -1,6 +1,7 @@
 import { FilmInfo } from "../poco/FilmInfo";
 import { useNavigate  } from "react-router-dom";
 import Config from "../Config";
+import ActionButton from "./controls/ActionButton";
 
 
 interface FilmParam {
@@ -22,12 +23,8 @@ function Film({film}: FilmParam) {
       <span className="block h-32 p-1 text-ellipsis overflow-hidden">{film.overview}</span>
 
       <div className="text-center mb-1">
-        <button className="bg-blue-500 margin-x-auto hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-          onClick={handleDetailsNavigation}>
-            Details
-        </button>
+        <ActionButton title="Details" action={handleDetailsNavigation}></ActionButton>
       </div>
-
     </div>
   );
 }
