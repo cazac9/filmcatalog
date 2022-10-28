@@ -20,8 +20,7 @@ function Film({film}: FilmParam) {
     <div className="w-48 bg-white m-1">
       <img src={ Config.ImagePath + "/w200" + film.poster_path} alt="loading" width="200" height="300"></img>
       <h1 className="text-l font-bold block mb-1 p-1 h-6 overflow-hidden">{film.title}</h1>
-      <span className="block h-32 p-1 text-ellipsis overflow-hidden">{film.overview}</span>
-
+      <p className="line-clamp-5 h-32 p-1">{film.overview}</p>
       <div className="text-center mb-1">
         <ActionButton title="Details" action={handleDetailsNavigation}></ActionButton>
       </div>

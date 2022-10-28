@@ -35,7 +35,7 @@ function App() {
               <Routes>
                   { genres.map( genre => <Route key={genre.id} path={"/" + genre.name } element={<FilmsPage genre={genre} />}/>) }
                   <Route path="/" element={<FilmsPage />}/>
-                  <Route path="/details/:filmId" element={<FilmDetails/>}/>
+                  <Route path="/details/:fId" element={<FilmDetails/>}/>
               </Routes>
             </ErrorBoundary>
           </main>
