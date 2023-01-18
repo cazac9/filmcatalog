@@ -22,11 +22,11 @@ function FilmsPage({genre}: GenreParam) {
 
   return (
     <>
-      <span className="text-3xl font-bold mb-4 inline-block">
+      <span className="text-3xl font-bold mb-4 inline-block" role="film-page-title">
         { genre?.name }
       </span>
 
-      <div className="flex flex-row flex-wrap">
+      <div className="flex flex-row flex-wrap" role="film-page-list">
         {movies.map(movie => <Film key={movie.id} film={movie}></Film>)}
       </div>
     </>

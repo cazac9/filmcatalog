@@ -17,7 +17,7 @@ function Film({film}: FilmParam) {
   }
 
   return (
-    <div className="w-48 bg-white m-1">
+    <div className="w-48 bg-white m-1" role="film">
       <img src={ Config.ImagePath + "/w200" + film.poster_path} alt="loading" width="200" height="300"></img>
       <h1 className="text-l font-bold block mb-1 p-1 h-6 overflow-hidden">{film.title}</h1>
       <p className="line-clamp-5 h-32 p-1">{film.overview}</p>

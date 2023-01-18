@@ -45,4 +45,10 @@ function App() {
   );
 }
 
+// 1. add unit testing (snapshot, user interaction(2-3 cases), data manipulation(success, error, loading) )
+// 2. logic testing - rating button + rating logic
+// 3. add jest, add tests,
+// 4. add api testing
+
+
 export default App;
