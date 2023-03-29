@@ -1,8 +1,10 @@
 import {render, screen} from "@testing-library/react";
 import React from "react";
-import * as router from 'react-router'
+import { store } from '../../app/store'
+import { Provider } from "react-redux";
 import FilmDetails from "../../pages/FilmDetails";
 import { FullFilmInfo } from "../../poco/FullFilmInfo";
+import Config from "../../Config";
 
 test("renders films details page", () =>{
   const filmInfo: FullFilmInfo = {
@@ -46,22 +48,30 @@ test("renders films details page", () =>{
     tagline: "family",
     title: "Hatiko",
     video: false,
-    vote_average: 33,
+    vote_average: 33, 
     vote_count: 333
   };
 
-  jest.spyOn(React, 'useState').mockImplementationOnce(() => [[ filmInfo ], ()=> null]);
+  jest.spyOn(React, 'useState').mockImplementationOnce(() => [ filmInfo , ()=> null]);
   jest.spyOn(React, 'useEffect').mockImplementationOnce(() => jest.fn());
-  // jest.spyOn(router, 'useNavigate').mockImplementation(() => jest.fn());
-
-  //render(<FilmDetails></FilmDetails>);
+  jest.mock("react-router-dom", () => ({
+    ...jest.requireActual("react-router-dom"),
+    useParams: jest.fn(),
+   }));
   
-  // const title = screen.getByRole('film-page-title');
-  // expect(title).toBeInTheDocument();
-  // expect(title).toHaveTextContent(genre.name);
+  render(<Provider store={store}>
+          <FilmDetails></FilmDetails>
+        </Provider>);
+  
+  const title = screen.getByRole('film-desc-title');
+  expect(title).toBeInTheDocument();
+  expect(title).toHaveTextContent(filmInfo.title);
 
-  // const moviesList = screen.getByRole('film-page-list');
-  // expect(moviesList).toBeInTheDocument();
- 
+  const poster = screen.getByRole('film-desc-poster');
+  expect(poster).toBeInTheDocument();
+  expect(poster).toHaveAttribute("src", Config.ImagePath + "/w500" + filmInfo.poster_path);
 
+  const overview = screen.getByRole('film-desc-overview');
+  expect(overview).toBeInTheDocument();
+  expect(overview).toHaveTextContent(filmInfo.overview);
 });

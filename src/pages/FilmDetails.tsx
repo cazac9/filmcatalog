@@ -30,7 +30,7 @@ function FilmDetails() {
   return (
     <div className="flex flex-row flex-wrap">
       <div className="w-2/6 mr-4">
-        {film?.poster_path && <img  src={ Config.ImagePath + "/w500" + film.poster_path} alt="loading" width="500" height="750"></img>}
+        {film?.poster_path && <img  role="film-desc-poster" src={ Config.ImagePath + "/w500" + film.poster_path} alt="loading" width="500" height="750"></img>}
         <div className="mt-4 text-center">
           <IconButton icon="bi-hand-thumbs-up" action={() => dispatch(incremented({filmId: filmId}))}></IconButton>
           <span className= {"inline-block text-xl px-4 font-bold " + (rating > 0 ? "text-green-600" : "text-red-600")}>{rating}</span>
@@ -39,7 +39,7 @@ function FilmDetails() {
       </div>
 
       <div className="w-3/6 ">
-        <span className="text-3xl font-bold mb-4 block text-orange-500">
+        <span role="film-desc-title" className="text-3xl font-bold mb-4 block text-orange-500">
           { film.title }
         </span>
 
@@ -54,7 +54,7 @@ function FilmDetails() {
           <FilmDescRow title="Produced By:" value={film.production_companies?.map(t => t.name).join(", ")}></FilmDescRow>
         </div>
 
-        <span className="block text-white w-2/3">
+        <span className="block text-white w-2/3" role="film-desc-overview">
           { film.overview }
         </span>
 
